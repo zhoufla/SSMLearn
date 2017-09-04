@@ -1,4 +1,6 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+﻿<%@page import="com.zhou.entity.Message"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -10,8 +12,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
 <title>内容列表页面</title>
-<link href="<%=basePath %>resource/css/all.css" rel="stylesheet" type="text/css" />
+<link href="<%=basePath%>resource/css/all.css" rel="stylesheet"
+	type="text/css" />
 </head>
+
+<jsp:useBean id="MyMessage" class="com.zhou.entity.Message"></jsp:useBean>
+<jsp:useBean id="MyMessageDAO" class="com.zhou.dao.MessageDAOImpl"></jsp:useBean>
+
 <body style="background: #e1e9eb;">
 	<form action="" id="mainForm" method="post">
 		<div class="right">
@@ -42,42 +49,45 @@
 							<tr>
 								<th><input type="checkbox" id="all" onclick="#" /></th>
 								<th>序号</th>
-								<th>演示字段1</th>
-								<th>演示字段2</th>
+								<th>指令名称</th>
+								<th>描述</th>
 								<th>操作</th>
 							</tr>
+
+							<%
+								List<Message> list = MyMessageDAO.queryAllMessages();
+								if (list == null || list.isEmpty())
+									return;
+								Message message = null;
+								for (int i = 0; i < list.size(); i++) {
+									message = list.get(i);
+									if (i % 2 == 1) {
+							%>
 							<tr>
 								<td><input type="checkbox" /></td>
-								<td>1</td>
-								<td>演示值1</td>
-								<td>演示值2</td>
+								<td><%=message.getID()%></td>
+								<td><%=message.getCOMMAND()%></td>
+								<td><%=message.getDESCRIPTION()%></td>
 								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a href="#">删除</a>
 								</td>
 							</tr>
+							<%
+								} else {
+							%>
 							<tr style="background-color: #ECF6EE;">
 								<td><input type="checkbox" /></td>
-								<td>2</td>
-								<td>演示值1</td>
-								<td>演示值2</td>
+								<td><%=message.getID()%></td>
+								<td><%=message.getCOMMAND()%></td>
+								<td><%=message.getDESCRIPTION()%></td>
 								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a href="#">删除</a>
 								</td>
 							</tr>
-							<tr>
-								<td><input type="checkbox" /></td>
-								<td>3</td>
-								<td>演示值1</td>
-								<td>演示值2</td>
-								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a href="#">删除</a>
-								</td>
-							</tr>
-							<tr style="background-color: #ECF6EE;">
-								<td><input type="checkbox" /></td>
-								<td>4</td>
-								<td>演示值1</td>
-								<td>演示值2</td>
-								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a href="#">删除</a>
-								</td>
-							</tr>
+
+							<%
+								}
+								}
+							%>
+
 						</tbody>
 					</table>
 					<div class='page fix'>
