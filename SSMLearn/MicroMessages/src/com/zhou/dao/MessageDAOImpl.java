@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zhou.entity.Message;
-import com.zhou.util.DbUtil;
+import com.zhou.util.DbcpUtil;
 
 public class MessageDAOImpl implements IMessageDAO {
 	private PreparedStatement psmt;
@@ -18,7 +18,7 @@ public class MessageDAOImpl implements IMessageDAO {
 	@Override
 	public List<Message> queryAllMessages() throws SQLException {
 		List<Message> result = new ArrayList<>();
-		connection = DbUtil.getConnection();
+		connection = DbcpUtil.getConnection();
 		String sql = "select * from message";
 		psmt = connection.prepareStatement(sql);
 		rs = psmt.executeQuery();
@@ -36,7 +36,7 @@ public class MessageDAOImpl implements IMessageDAO {
 
 	@Override
 	public Message queryMessageById(int id) throws SQLException {
-		connection = DbUtil.getConnection();
+		connection = DbcpUtil.getConnection();
 		Message message = null;
 		String sql = "select * from message where ID=?";
 		psmt = connection.prepareStatement(sql);
@@ -56,7 +56,7 @@ public class MessageDAOImpl implements IMessageDAO {
 
 	@Override
 	public boolean insert(Message message) throws SQLException {
-		connection = DbUtil.getConnection();
+		connection = DbcpUtil.getConnection();
 		String sql = "INSERT INTO MESSAGE(ID,COMMAND,DESCRIPTION,CONTENT) VALUES(?,?,?,?)";
 		psmt = connection.prepareStatement(sql);
 		psmt.setInt(1, message.getID());
@@ -70,7 +70,7 @@ public class MessageDAOImpl implements IMessageDAO {
 
 	@Override
 	public boolean update(Message message) throws SQLException {
-		connection = DbUtil.getConnection();
+		connection = DbcpUtil.getConnection();
 		String sql = "UPDATE MESSAGE SET ID = ? ,COMMAND =? ,DESCRIPTION = ?,CONTENT = ? WHERE ID = ?";
 		psmt = connection.prepareStatement(sql);
 		psmt.setInt(1, message.getID());
@@ -85,7 +85,7 @@ public class MessageDAOImpl implements IMessageDAO {
 
 	@Override
 	public boolean delete(Message message) throws SQLException {
-		connection = DbUtil.getConnection();
+		connection = DbcpUtil.getConnection();
 		String sql = "DELETE FROM MESSAGE WHERE ID = ?";
 		psmt = connection.prepareStatement(sql);
 		psmt.setInt(1, message.getID());

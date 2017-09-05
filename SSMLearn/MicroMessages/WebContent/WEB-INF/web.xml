@@ -22,4 +22,13 @@
 		<servlet-name>ListServlet</servlet-name>
 		<url-pattern>/list.action</url-pattern>
 	</servlet-mapping>
+
+
+	<resource-ref>
+		<!-- 连接池名，一般为“jdbc/<数据源名>”，与context.xml -->
+		<!-- 中的"<Resource>.name"对应即可 -->
+		<res-ref-name>jdbc/zhou</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 </web-app>

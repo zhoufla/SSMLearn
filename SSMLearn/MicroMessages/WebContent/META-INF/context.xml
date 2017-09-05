@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <Resource name="jdbc/zhou" auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/zhou?characterEncoding=UTF-8"
+        username="root"
+        password="root"
+        maxActive="200"
+        maxIdle="50"
+        maxWait="3000">
+    </Resource>
+</Context>
