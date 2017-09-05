@@ -19,7 +19,7 @@ public class MessageDAOImpl implements IMessageDAO {
 	public List<Message> queryAllMessages() throws SQLException {
 		List<Message> result = new ArrayList<>();
 		connection = DbcpUtil.getConnection();
-		String sql = "select * from message";
+		String sql = "select id,command,description,content from message";
 		psmt = connection.prepareStatement(sql);
 		rs = psmt.executeQuery();
 		while (rs.next()) {
@@ -38,10 +38,9 @@ public class MessageDAOImpl implements IMessageDAO {
 	public Message queryMessageById(int id) throws SQLException {
 		connection = DbcpUtil.getConnection();
 		Message message = null;
-		String sql = "select * from message where ID=?";
+		String sql = "select id,command,description,content from message where ID=?";
 		psmt = connection.prepareStatement(sql);
 		psmt.setInt(1, id);
-		;
 		rs = psmt.executeQuery();
 		while (rs.next()) {
 			message = new Message();
@@ -96,6 +95,7 @@ public class MessageDAOImpl implements IMessageDAO {
 
 	/**
 	 * 释放资源
+	 * 
 	 * @return
 	 * @throws SQLException
 	 */
@@ -109,5 +109,40 @@ public class MessageDAOImpl implements IMessageDAO {
 			psmt = null;
 		}
 		return true;
+	}
+
+	@Override
+	public List<Message> queryMessageByParams(String command, String description) throws SQLException {
+		connection = DbcpUtil.getConnection();
+		List<Message> result = new ArrayList<>();
+		List<String> list = new ArrayList<>();
+		StringBuffer sql = new StringBuffer();
+		sql.append("select id,command,description,content from message where 1=1 ");
+
+		if (command != null && !"".equals(command)) {
+			sql.append("and command = ?  ");
+			list.add(command);
+		}
+
+		if (description != null && !"".equals(description)) {
+			sql.append("and description like '%'?'%' ");
+			list.add(command);
+		}
+
+		psmt = connection.prepareStatement(sql.toString());
+		for (int i = 0; i < list.size(); i++) {
+			psmt.setString(i + 1, list.get(i));
+		}
+		rs = psmt.executeQuery();
+		while (rs.next()) {
+			Message message = new Message();
+			message.setID(rs.getInt("ID"));
+			message.setCOMMAND(rs.getString("COMMAND"));
+			message.setCONTENT("CONTENT");
+			message.setDESCRIPTION(rs.getString("DESCRIPTION"));
+			result.add(message);
+		}
+		close();
+		return result;
 	}
 }

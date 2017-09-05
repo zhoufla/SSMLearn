@@ -1,12 +1,19 @@
 package com.zhou.entity;
 
+import java.io.Serializable;
+
 /**
  * 消息实体类
  * 
  * @author zhou
  *
  */
-public class Message {
+public class Message implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int ID;// ID号
 	private String COMMAND;// 命令类型
 	private String DESCRIPTION;// 描述
@@ -46,10 +53,5 @@ public class Message {
 	public void setCONTENT(String cONTENT) {
 		CONTENT = cONTENT;
 	}
-	
-	/*@Override
-	public String toString() {
-		return ID+"-"+COMMAND+"-"+DESCRIPTION+"-"+CONTENT;
-	}*/
 
 }

@@ -27,6 +27,8 @@ public interface IMessageDAO {
 	 */
 	public Message queryMessageById(int id) throws SQLException;
 
+	public List<Message> queryMessageByParams(String command,String description) throws SQLException;
+	
 	/**
 	 * 新增
 	 * 
