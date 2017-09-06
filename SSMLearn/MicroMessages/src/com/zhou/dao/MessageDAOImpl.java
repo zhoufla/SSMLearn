@@ -10,6 +10,12 @@ import java.util.List;
 import com.zhou.entity.Message;
 import com.zhou.util.DbcpUtil;
 
+/**
+ * 使用JDBC实现的DAO接口
+ * 
+ * @author zhou
+ *
+ */
 public class MessageDAOImpl implements IMessageDAO {
 	private PreparedStatement psmt;
 	private Connection connection;

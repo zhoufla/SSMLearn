@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.zhou.dao.IMessageDAO;
 import com.zhou.dao.MessageDAOImpl;
+import com.zhou.dao.MessageDAOiBatisImpl;
 import com.zhou.entity.Message;
 
 /**
@@ -14,13 +15,15 @@ import com.zhou.entity.Message;
  *
  */
 public class ListService {
+	private IMessageDAO dao;
+
 	public List<Message> queryMessageByParams(String command, String description) throws SQLException {
-		IMessageDAO dao = new MessageDAOImpl();
+		dao = new MessageDAOImpl();
 		return dao.queryMessageByParams(command, description);
 	}
 
 	public List<Message> queryAllMessages() throws SQLException {
-		IMessageDAO dao = new MessageDAOImpl();
+		dao = new MessageDAOiBatisImpl();
 		return dao.queryAllMessages();
 	}
 
