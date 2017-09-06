@@ -117,16 +117,16 @@ public class MessageDAOImpl implements IMessageDAO {
 		List<Message> result = new ArrayList<>();
 		List<String> list = new ArrayList<>();
 		StringBuffer sql = new StringBuffer();
-		sql.append("select id,command,description,content from message where 1=1 ");
+		sql.append("SELECT ID,COMMAND,DESCRIPTION,CONTENT FROM MESSAGE WHERE 1=1 ");
 
 		if (command != null && !"".equals(command)) {
-			sql.append("and command = ?  ");
+			sql.append("AND COMMAND like ?  ");
 			list.add(command);
 		}
 
 		if (description != null && !"".equals(description)) {
-			sql.append("and description like '%'?'%' ");
-			list.add(command);
+			sql.append("AND DESCRIPTION = ? ");
+			list.add(description);
 		}
 
 		psmt = connection.prepareStatement(sql.toString());

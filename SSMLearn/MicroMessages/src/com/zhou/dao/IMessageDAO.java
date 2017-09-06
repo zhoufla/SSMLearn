@@ -27,6 +27,13 @@ public interface IMessageDAO {
 	 */
 	public Message queryMessageById(int id) throws SQLException;
 
+	/**
+	 * 根据信息查询Message
+	 * @param command
+	 * @param description
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Message> queryMessageByParams(String command,String description) throws SQLException;
 	
 	/**
