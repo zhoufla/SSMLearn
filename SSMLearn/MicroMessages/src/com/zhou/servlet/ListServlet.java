@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.zhou.dao.IMessageDAO;
-import com.zhou.dao.MessageDAOImpl;
 import com.zhou.entity.Message;
+import com.zhou.service.ListService;
 
 public class ListServlet extends HttpServlet {
 
@@ -24,9 +23,9 @@ public class ListServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Message> result = null;
-		IMessageDAO dao = new MessageDAOImpl();
+		ListService service = new ListService();
 		try {
-			result = dao.queryAllMessages();
+			result = service.queryAllMessages();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -40,10 +39,10 @@ public class ListServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		String command = req.getParameter("command");
 		String description = req.getParameter("description");
-		IMessageDAO dao = new MessageDAOImpl();
+		ListService service = new ListService();
 		List<Message> result = null;
 		try {
-			result = dao.queryMessageByParams(command, description);
+			result = service.queryMessageByParams(command, description);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -51,5 +50,4 @@ public class ListServlet extends HttpServlet {
 		session.setAttribute("data", result);
 		req.getRequestDispatcher("/WEB-INF/jsp/list.jsp").forward(req, resp);
 	}
-
 }
