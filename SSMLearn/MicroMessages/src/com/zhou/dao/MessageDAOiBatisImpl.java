@@ -42,7 +42,22 @@ public class MessageDAOiBatisImpl implements IMessageDAO {
 
 	@Override
 	public List<Message> queryMessageByParams(String command, String description) throws SQLException {
-		return null;
+		List<Message> result = null;
+		try {
+			session = DBAccess.getSqlSession();
+			Message params = new Message();
+			params.setCOMMAND(command);
+			params.setDESCRIPTION(description);
+			result = session.selectList("Message.queryAllMessagesByParams", params);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+				session = null;
+			}
+		}
+		return result;
 	}
 
 	@Override

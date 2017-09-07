@@ -35,11 +35,7 @@ public class DBAccess {
 	 * @return
 	 */
 	public static SqlSession getSqlSession() {
-		if (sqlSession == null)
-			synchronized (SqlSession.class) {
-				if (sqlSession == null)
-					sqlSession = sqlSessionFactory.openSession();
-			}
+		sqlSession = sqlSessionFactory.openSession();
 		return sqlSession;
 	}
 
