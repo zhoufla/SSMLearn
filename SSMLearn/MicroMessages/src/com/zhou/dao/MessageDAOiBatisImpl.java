@@ -72,6 +72,19 @@ public class MessageDAOiBatisImpl implements IMessageDAO {
 
 	@Override
 	public boolean delete(Message message) throws SQLException {
+		try {
+			session = DBAccess.getSqlSession();
+			session.delete("Message.deleteoneMessageById", message.getID());
+			session.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+				session = null;
+			}
+		}
 		return false;
 	}
 

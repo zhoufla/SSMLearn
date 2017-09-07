@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.zhou.entity.Message;
 import com.zhou.service.ListService;
+import com.zhou.service.Service;
 
 public class ListServlet extends HttpServlet {
 
@@ -39,10 +40,10 @@ public class ListServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		String command = req.getParameter("command");
 		String description = req.getParameter("description");
-		ListService service = new ListService();
+		Service service = new ListService();
 		List<Message> result = null;
 		try {
-			result = service.queryMessageByParams(command, description);
+			result = ((ListService) service).queryMessageByParams(command, description);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

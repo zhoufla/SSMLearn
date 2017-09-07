@@ -16,9 +16,6 @@
 	type="text/css" />
 </head>
 
-<jsp:useBean id="MyMessage" class="com.zhou.entity.Message"></jsp:useBean>
-<jsp:useBean id="MyMessageDAO" class="com.zhou.dao.MessageDAOImpl"></jsp:useBean>
-
 <body style="background: #e1e9eb;">
 	<form action="<%=basePath%>list.action" id="mainForm" method="post">
 		<div class="right">
@@ -35,8 +32,8 @@
 					<tbody>
 						<tr>
 							<%
-								String command = request.getParameter("command")==null?"":request.getParameter("command");
-								String description = request.getParameter("description")==null?"":request.getParameter("description");
+								String command = request.getParameter("command") == null ? "" : request.getParameter("command");
+								String description = request.getParameter("description") == null ? "" : request.getParameter("description");
 							%>
 							<td width="90" align="right">指令名称：</td>
 							<td><input name="command" type="text" class="allInput"
@@ -74,7 +71,7 @@
 								<td><%=message.getID()%></td>
 								<td><%=message.getCOMMAND()%></td>
 								<td><%=message.getDESCRIPTION()%></td>
-								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a href="#">删除</a>
+								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a href="<%=basePath%>deleteone.action?action=deleteone&&id=<%=message.getID()%>">删除</a>
 								</td>
 							</tr>
 							<%
@@ -85,7 +82,8 @@
 								<td><%=message.getID()%></td>
 								<td><%=message.getCOMMAND()%></td>
 								<td><%=message.getDESCRIPTION()%></td>
-								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a href="#">删除</a>
+								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a
+									href="<%=basePath%>deleteone.action?action=deleteone&&id=<%=message.getID()%>">删除</a>
 								</td>
 							</tr>
 

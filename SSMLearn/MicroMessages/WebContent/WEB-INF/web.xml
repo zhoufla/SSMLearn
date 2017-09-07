@@ -17,12 +17,21 @@
 		<servlet-name>ListServlet</servlet-name>
 		<servlet-class>com.zhou.servlet.ListServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>MaintainServlet</servlet-name>
+		<servlet-class>com.zhou.servlet.MaintainServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>ListServlet</servlet-name>
 		<url-pattern>/list.action</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>MaintainServlet</servlet-name>
+		<url-pattern>/deleteone.action</url-pattern>
+	</servlet-mapping>
 
 	<resource-ref>
 		<!-- 连接池名，一般为“jdbc/<数据源名>”，与context.xml -->

@@ -20,4 +20,18 @@
 		<if test="COMMAND!=null and !&quot;&quot;.equals(COMMAND.trim())">AND COMMAND = #{COMMAND}</if>
 		<if test="DESCRIPTION!=null and !&quot;&quot;.equals(DESCRIPTION.trim())">AND DESCRIPTION like '%' #{DESCRIPTION} '%'</if>
 	</select>
+
+	<delete id="deleteoneMessageById" parameterType="Integer">
+		delete from
+		MESSAGE where id = #{_parameter}
+	</delete>
+
+	<delete id="deletbatch" parameterType="java.util.List">
+		delete from MESSAGE where id in (
+		<foreach collection="List" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</delete>
+
 </mapper>

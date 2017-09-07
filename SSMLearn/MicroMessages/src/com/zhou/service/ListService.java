@@ -13,7 +13,7 @@ import com.zhou.entity.Message;
  * @author zhou
  *
  */
-public class ListService {
+public class ListService implements Service{
 	private IMessageDAO dao;
 
 	public List<Message> queryMessageByParams(String command, String description) throws SQLException {
