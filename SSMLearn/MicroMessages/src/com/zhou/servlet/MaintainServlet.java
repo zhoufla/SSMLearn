@@ -27,13 +27,14 @@ public class MaintainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String action = req.getParameter("action");
-		String id = req.getParameter("id");
 		Service service = new MaintainService();
 		try {
-			if ("deleteone".equals(action))
+			if ("deleteone".equals(action)) {
+				String id = req.getParameter("id");
 				((MaintainService) service).deleteOne(id);
-			else if ("deletebatch".equals(action)) {
-
+			} else if ("deletebatch".equals(action)) {
+				String[] ids = req.getParameterValues("ids");
+				((MaintainService) service).deleteBatch(ids);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

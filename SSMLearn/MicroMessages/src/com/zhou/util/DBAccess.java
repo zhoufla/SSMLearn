@@ -15,7 +15,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  *
  */
 public class DBAccess {
-	private static SqlSessionFactory sqlSessionFactory;
+	private final static SqlSessionFactory sqlSessionFactory;
 	private static SqlSession sqlSession;
 
 	static {

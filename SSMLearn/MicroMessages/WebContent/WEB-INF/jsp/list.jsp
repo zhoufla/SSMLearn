@@ -14,6 +14,8 @@
 <title>内容列表页面</title>
 <link href="<%=basePath%>resource/css/all.css" rel="stylesheet"
 	type="text/css" />
+<script src="<%=basePath%>resource/js/list.js"></script>
+<script src="<%=basePath%>resource/js/jquery-1.8.0.min.js"></script>
 </head>
 
 <body style="background: #e1e9eb;">
@@ -24,9 +26,11 @@
 				&gt; 内容列表
 			</div>
 			<div class="rightCont">
+			
 				<p class="g_title fix">
 					内容列表 <a class="btn03" href="#">新 增</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-						class="btn03" href="#">删 除</a>
+						class="btn03" href="javascript:deleteBatch('<%=basePath%>')">删
+						除</a>
 				</p>
 				<table class="tab1">
 					<tbody>
@@ -56,7 +60,6 @@
 								<th>描述</th>
 								<th>操作</th>
 							</tr>
-
 							<%
 								List<Message> list = (List) session.getAttribute("data");
 								if (list == null || list.isEmpty())
@@ -67,31 +70,26 @@
 									if (i % 2 == 1) {
 							%>
 							<tr>
-								<td><input type="checkbox" /></td>
-								<td><%=message.getID()%></td>
-								<td><%=message.getCOMMAND()%></td>
-								<td><%=message.getDESCRIPTION()%></td>
-								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a href="<%=basePath%>deleteone.action?action=deleteone&&id=<%=message.getID()%>">删除</a>
-								</td>
-							</tr>
-							<%
-								} else {
-							%>
-							<tr style="background-color: #ECF6EE;">
-								<td><input type="checkbox" /></td>
-								<td><%=message.getID()%></td>
-								<td><%=message.getCOMMAND()%></td>
-								<td><%=message.getDESCRIPTION()%></td>
-								<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a
-									href="<%=basePath%>deleteone.action?action=deleteone&&id=<%=message.getID()%>">删除</a>
-								</td>
-							</tr>
-
-							<%
-								}
-								}
-							%>
-
+								<%
+									} else {
+								%>
+								<tr style="background-color: #ECF6EE;">
+									<%
+										}
+									%>
+									<td><input type="checkbox" name="ids"
+										value="<%=message.getID()%>" /></td>
+									<td><%=message.getID()%></td>
+									<td><%=message.getCOMMAND()%></td>
+									<td><%=message.getDESCRIPTION()%></td>
+									<td><a href="#">修改</a>&nbsp;&nbsp;&nbsp; <a
+										href="<%=basePath%>MaintainServlet.action?action=deleteone&&id=<%=message.getID()%>">删除</a>
+									</td>
+								</tr>
+								<%
+									}
+								%>
+							
 						</tbody>
 					</table>
 					<div class='page fix'>

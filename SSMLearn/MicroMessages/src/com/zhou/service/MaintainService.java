@@ -1,6 +1,7 @@
 package com.zhou.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.zhou.dao.IMessageDAO;
@@ -31,14 +32,19 @@ public class MaintainService implements Service {
 
 	/**
 	 * 批量删除
+	 * 
 	 * @param list
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean deleteBatch(List<Integer> list) throws SQLException {
-		if (list == null || list.isEmpty())
+	public boolean deleteBatch(String[] ids) throws SQLException {
+		if (ids == null || ids.length <= 0)
 			return false;
 		dao = new MessageDAOiBatisImpl();
+		List<Integer> list = new ArrayList<>();
+		for (String id : ids) {
+			list.add(Integer.valueOf(id));
+		}
 		return dao.deleteBatch(list);
 	}
 }

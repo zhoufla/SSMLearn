@@ -26,9 +26,9 @@
 		MESSAGE where id = #{_parameter}
 	</delete>
 
-	<delete id="deletbatch" parameterType="java.util.List">
+	<delete id="deletbatch" parameterType="list">
 		delete from MESSAGE where id in (
-		<foreach collection="List" item="item" separator=",">
+		<foreach collection="list" item="item" separator=",">
 			#{item}
 		</foreach>
 		)
