@@ -89,11 +89,11 @@ public class MessageDAOImpl implements IMessageDAO {
 	}
 
 	@Override
-	public boolean delete(Message message) throws SQLException {
+	public boolean delete(int id) throws SQLException {
 		connection = DbcpUtil.getConnection();
 		String sql = "DELETE FROM MESSAGE WHERE ID = ?";
 		psmt = connection.prepareStatement(sql);
-		psmt.setInt(1, message.getID());
+		psmt.setInt(1, id);
 		psmt.execute();
 		close();
 		return true;
@@ -150,5 +150,10 @@ public class MessageDAOImpl implements IMessageDAO {
 		}
 		close();
 		return result;
+	}
+
+	@Override
+	public boolean deleteBatch(List<Integer> list) throws SQLException {
+		return false;
 	}
 }

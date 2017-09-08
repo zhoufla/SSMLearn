@@ -32,7 +32,9 @@ public class MaintainServlet extends HttpServlet {
 		try {
 			if ("deleteone".equals(action))
 				((MaintainService) service).deleteOne(id);
+			else if ("deletebatch".equals(action)) {
 
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

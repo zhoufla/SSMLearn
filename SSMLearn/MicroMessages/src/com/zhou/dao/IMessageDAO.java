@@ -29,13 +29,14 @@ public interface IMessageDAO {
 
 	/**
 	 * 根据信息查询Message
+	 * 
 	 * @param command
 	 * @param description
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Message> queryMessageByParams(String command,String description) throws SQLException;
-	
+	public List<Message> queryMessageByParams(String command, String description) throws SQLException;
+
 	/**
 	 * 新增
 	 * 
@@ -55,9 +56,17 @@ public interface IMessageDAO {
 	/**
 	 * 删除
 	 * 
-	 * @param message
+	 * @param Id
 	 * @return
 	 */
-	public boolean delete(Message message) throws SQLException;
+	public boolean delete(int Id) throws SQLException;
+
+	/**
+	 * 批量删除
+	 * @param list
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean deleteBatch(List<Integer> list) throws SQLException;
 
 }
