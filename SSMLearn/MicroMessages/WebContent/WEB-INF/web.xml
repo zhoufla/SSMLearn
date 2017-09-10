@@ -17,10 +17,15 @@
 		<servlet-name>ListServlet</servlet-name>
 		<servlet-class>com.zhou.servlet.ListServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet>
 		<servlet-name>MaintainServlet</servlet-name>
 		<servlet-class>com.zhou.servlet.MaintainServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>InitTalkServlet</servlet-name>
+		<servlet-class>com.zhou.servlet.InitTalkServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -31,6 +36,11 @@
 	<servlet-mapping>
 		<servlet-name>MaintainServlet</servlet-name>
 		<url-pattern>/MaintainServlet.action</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>InitTalkServlet</servlet-name>
+		<url-pattern>/talk.action</url-pattern>
 	</servlet-mapping>
 
 	<resource-ref>
