@@ -2,18 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/spring/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-aop-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-aspects-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-beans-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-context-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-context-support-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-core-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-expression-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-framework-bom-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring/spring-instrument-4.0.5.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring4.0"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.2-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -11,13 +11,13 @@ public class HelloServiceTest {
 	private ApplicationContext context;
 
 	@Test
-	  public void testHelloWorld() {
-        context = new ClassPathXmlApplicationContext("helloservice.xml");
-        // 2、从容器中获取Bean，注意此处完全“面向接口编程，而不是面向实现”
-        HelloService helloService = context.getBean("helloService", HelloService.class);
-        // 3、执行业务逻辑
-        //helloService.sayHello();
-        helloService.save("你好！");
-    }
+	public void testHelloWorld() {
+		context = new ClassPathXmlApplicationContext("helloservice.xml");
+		// 2、从容器中获取Bean，注意此处完全“面向接口编程，而不是面向实现”
+		HelloService helloService = context.getBean("helloService", HelloService.class);
+		// 3、执行业务逻辑
+		// helloService.sayHello();
+		helloService.save("你好！");
+	}
 
 }
