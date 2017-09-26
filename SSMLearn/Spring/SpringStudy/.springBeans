@@ -7,6 +7,8 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+		<config>src/jdbcpool.xml</config>
+		<config>src/beans-factory.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
