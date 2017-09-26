@@ -1,5 +1,8 @@
 package com.zhou.entity;
 
+import org.springframework.stereotype.Component;
+
+@Component(value="person4")
 public class Person {
 	private String name;
 	private int age;

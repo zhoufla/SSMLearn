@@ -8,9 +8,9 @@ import com.zhou.entity.Person;
 public class Main {
 
 	public static void main(String[] args) {
-		AbstractApplicationContext context = new ClassPathXmlApplicationContext("beans-factorybean.xml");
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("beans-annotation.xml");
 
-		Person person = context.getBean("person3", Person.class);
+		Person person = context.getBean("person4", Person.class);
 
 		System.out.println(person);
 		
