@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans-aop.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring-aop/beans-aop.xml");
 
 		Calculator calculator = context.getBean("calculatorImpl", Calculator.class);
 		
