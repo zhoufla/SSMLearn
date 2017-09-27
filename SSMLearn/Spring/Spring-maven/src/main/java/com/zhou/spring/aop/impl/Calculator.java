@@ -6,11 +6,11 @@ package com.zhou.spring.aop.impl;
  *
  */
 public interface Calculator {
-	public double add(double i, double j);
+	public int add(int i, int j);
 
-	public double sub(double i, double j);
+	public int sub(int i, int j);
 
-	public double mul(double i, double j);
+	public int mul(int i, int j);
 
-	public double div(double i, double j);
+	public int div(int i, int j);
 }
