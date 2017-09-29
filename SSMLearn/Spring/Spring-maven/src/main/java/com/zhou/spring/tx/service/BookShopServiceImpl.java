@@ -12,7 +12,8 @@ public class BookShopServiceImpl implements IBookShopService {
 
 	@Autowired
 	private IBookShopDAO bookShopDAO;
-
+	
+	@Transactional
 	@Override
 	public void purchase(String username, String bookid, int num) {
 		// 查询单价

@@ -3,13 +3,11 @@ package com.zhou.spring.tx.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.zhou.spring.tx.exception.BookStockException;
 import com.zhou.spring.tx.exception.UserAccountException;
 
 @Repository("bookShopDAO")
-@Transactional
 public class BookShopDAOImpl implements IBookShopDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
